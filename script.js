@@ -9,33 +9,43 @@ document.querySelectorAll('a').forEach(anchor => {
     });
 });
 
-// Fade-in on scroll
-const elements = document.querySelectorAll('.fade-in');
+// ===============================
+// 🔥 FADE-IN ANIMATION ON SCROLL
+// ===============================
+const faders = document.querySelectorAll(".fade-in");
 
-window.addEventListener('scroll', () => {
-    elements.forEach(el => {
-        const position = el.getBoundingClientRect().top;
-        const screenHeight = window.innerHeight;
-
-        if (position < screenHeight - 100) {
-            el.classList.add('show');
+window.addEventListener("scroll", () => {
+    faders.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            el.classList.add("show");
         }
     });
 });
 
-// 🔥 Hamburger menu
+
+// ===============================
+// 🍔 HAMBURGER MENU
+// ===============================
 const toggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
-toggle.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-});
+if (toggle && navLinks) {
+    toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+}
 
-// 🔥 Close menu when link clicked
+
+// ===============================
+// ❌ CLOSE MENU AFTER CLICK
+// ===============================
 const links = document.querySelectorAll("#nav-links a");
 
 links.forEach(link => {
     link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
+        if (navLinks) {
+            navLinks.classList.remove("active");
+        }
     });
 });
