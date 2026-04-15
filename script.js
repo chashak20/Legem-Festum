@@ -1,4 +1,6 @@
-// Smooth Scroll
+// ===============================
+// 🔗 SMOOTH SCROLL
+// ===============================
 document.querySelectorAll('a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         if (this.getAttribute('href').startsWith("#")) {
@@ -9,8 +11,9 @@ document.querySelectorAll('a').forEach(anchor => {
     });
 });
 
+
 // ===============================
-// 🔥 FADE-IN ANIMATION ON SCROLL
+// 🔥 FADE-IN ANIMATION
 // ===============================
 const faders = document.querySelectorAll(".fade-in");
 
@@ -32,20 +35,37 @@ const navLinks = document.getElementById("nav-links");
 
 if (toggle && navLinks) {
     toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
         navLinks.classList.toggle("active");
+    });
+
+    document.querySelectorAll("#nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            toggle.classList.remove("active");
+        });
     });
 }
 
 
 // ===============================
-// ❌ CLOSE MENU AFTER CLICK
+// 🌄 BACKGROUND CHANGE ON SCROLL (ADD THIS AT LAST)
 // ===============================
-const links = document.querySelectorAll("#nav-links a");
+const sections = document.querySelectorAll("section");
 
-links.forEach(link => {
-    link.addEventListener("click", () => {
-        if (navLinks) {
-            navLinks.classList.remove("active");
+window.addEventListener("scroll", () => {
+    let scrollPos = window.scrollY + window.innerHeight / 2;
+
+    sections.forEach(section => {
+        if (
+            scrollPos >= section.offsetTop &&
+            scrollPos < section.offsetTop + section.offsetHeight
+        ) {
+            let bg = section.getAttribute("data-bg");
+
+            if (bg) {
+                document.body.style.background = `url(${bg}) no-repeat center/cover`;
+            }
         }
     });
 });

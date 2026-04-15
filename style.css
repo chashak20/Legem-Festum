@@ -1,3 +1,6 @@
+/* ================= GOOGLE FONTS ================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cinzel:wght@500;700&family=Playfair+Display:wght@400;600&display=swap');
+
 /* ================= RESET ================= */
 * {
     margin: 0;
@@ -9,10 +12,26 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ================= BODY ================= */
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #0f172a, #020617);
     color: #fff;
+
+    /* 🔥 Smooth font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ================= HEADINGS ================= */
+h1, h2 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1.5px;
+}
+
+h2 {
+    font-size: 2.2rem;
+    text-shadow: 0 0 15px rgba(255,255,255,0.2);
 }
 
 /* ================= NAVBAR ================= */
@@ -24,7 +43,7 @@ body {
     position: sticky;
     top: 0;
     backdrop-filter: blur(10px);
-    background: rgba(2, 6, 23, 0.8);
+    background: rgba(2, 6, 23, 0.85);
     border-bottom: 1px solid rgba(255,255,255,0.05);
     z-index: 1000;
 }
@@ -33,7 +52,7 @@ body {
     font-weight: 600;
 }
 
-/* DEFAULT NAV LINKS */
+/* NAV LINKS */
 #nav-links {
     list-style: none;
     display: flex;
@@ -43,6 +62,7 @@ body {
 .navbar a {
     text-decoration: none;
     color: #cbd5f5;
+    font-weight: 500;
     transition: 0.3s;
 }
 
@@ -53,8 +73,36 @@ body {
 /* ================= HAMBURGER ================= */
 .menu-toggle {
     display: none;
-    font-size: 1.8rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
+    gap: 5px;
+    position: relative;
+    z-index: 1100;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: 0.4s;
+    border-radius: 2px;
+}
+
+/* ANIMATE INTO X */
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* ================= HERO ================= */
@@ -66,11 +114,12 @@ body {
 .hero h1 {
     font-size: 3rem;
     font-weight: 700;
+    text-shadow: 0 0 30px rgba(232, 232, 232, 0.4);
 }
 
 .hero p {
     margin-top: 10px;
-    color: #94a3b8;
+    color: #000000;
 }
 
 /* ================= BUTTON ================= */
@@ -121,7 +170,23 @@ body {
 .about {
     padding: 60px 20px;
     text-align: center;
-    color: #cbd5f5;
+}
+
+.about h2 {
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #e2e8f0;
+    max-width: 850px;
+    margin: auto;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
 }
 
 /* ================= GALLERY ================= */
@@ -141,272 +206,12 @@ body {
     width: 100%;
     border-radius: 12px;
     transition: 0.4s;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.05);
-}
-
-/* ================= CONTACT ================= */
-.contact {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.contact input,
-.contact textarea {
-    width: 80%;
-    margin: 10px auto;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-}
-
-/* ================= FOOTER ================= */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #020617;
-}
-
-/* ================= FADE ANIMATION ================= */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 0.6s ease;
-}
-
-.fade-in.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ================= EVENTS GALLERY ================= */
-.events-page {
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.event-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
-}
-
-.event-card {
-    background: rgba(30, 41, 59, 0.6);
-    border-radius: 15px;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    transition: 0.4s;
-}
-
-.event-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.event-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-
-.event-info {
-    padding: 15px;
-}
-
-.event-info p {
-    color: #94a3b8;
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .navbar {
-        position: relative;
-    }
-
-    #nav-links {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: #020617;
-        flex-direction: column;
-
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-    }
-
-    #nav-links li {
-        text-align: center;
-        padding: 12px 0;
-    }
-
-    #nav-links.active {
-        max-height: 300px;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-}
-
-/* ================= RESET ================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0f172a, #020617);
-    color: #fff;
-}
-
-/* ================= NAVBAR ================= */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    position: sticky;
-    top: 0;
-    backdrop-filter: blur(10px);
-    background: rgba(2, 6, 23, 0.8);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    z-index: 1000;
-}
-
-.navbar h2 {
-    font-weight: 600;
-}
-
-/* DEFAULT NAV LINKS */
-#nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: #cbd5f5;
-    transition: 0.3s;
-}
-
-.navbar a:hover {
-    color: #3b82f6;
-}
-
-/* ================= HAMBURGER ================= */
-.menu-toggle {
-    display: none;
-    font-size: 1.8rem;
     cursor: pointer;
 }
 
-/* ================= HERO ================= */
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    font-weight: 700;
-}
-
-.hero p {
-    margin-top: 10px;
-    color: #94a3b8;
-}
-
-/* ================= BUTTON ================= */
-.btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 12px 28px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(59,130,246,0.4);
-}
-
-/* ================= EVENTS ================= */
-.events {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.card {
-    background: rgba(30, 41, 59, 0.6);
-    padding: 25px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-}
-
-/* ================= ABOUT ================= */
-.about {
-    padding: 60px 20px;
-    text-align: center;
-    color: #cbd5f5;
-}
-
-/* ================= GALLERY ================= */
-.gallery {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.gallery-grid img {
-    width: 100%;
-    border-radius: 12px;
-    transition: 0.4s;
-}
-
 .gallery-grid img:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
 }
 
 /* ================= CONTACT ================= */
@@ -431,7 +236,7 @@ footer {
     background: #020617;
 }
 
-/* ================= FADE ANIMATION ================= */
+/* ================= FADE ================= */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -443,7 +248,7 @@ footer {
     transform: translateY(0);
 }
 
-/* ================= EVENTS GALLERY ================= */
+/* ================= EVENTS PAGE ================= */
 .events-page {
     text-align: center;
     padding: 60px 20px;
@@ -472,7 +277,7 @@ footer {
 
 .event-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(255, 24, 24, 0.5);
 }
 
 .event-info {
@@ -487,7 +292,7 @@ footer {
 @media (max-width: 768px) {
 
     .menu-toggle {
-        display: block;
+        display: flex;
     }
 
     .navbar {
@@ -501,6 +306,7 @@ footer {
         width: 100%;
         background: #020617;
         flex-direction: column;
+        z-index: 999;
 
         max-height: 0;
         overflow: hidden;
@@ -518,6 +324,11 @@ footer {
 
     .hero h1 {
         font-size: 2rem;
+    }
+
+    .about p {
+        font-size: 1rem;
+        padding: 0 10px;
     }
 
     .event-card img {
